@@ -9,7 +9,7 @@ using Newtonsoft.Json.Linq;
 namespace YandexRasp {
     public class RequestBroker {
         public enum SelectionType { Airport, DateTime, BothWays }
-        public static object GetRaspModels(SelectionType selectionType, DateTime date, string from, string to, string apikey = "59a57274-9e08-4154-91ab-76407221a7c0", string format = "json", string system = "iata") {
+        public static object GetRaspModels(SelectionType selectionType, DateTime date, string from, string to, string apikey = "", string format = "json", string system = "iata") {
             
             HttpClient client = new HttpClient();
             HttpRequestMessage request = new HttpRequestMessage();
