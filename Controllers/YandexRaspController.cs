@@ -18,6 +18,20 @@ public class YandexRaspController : ControllerBase
     }
 
     [HttpGet]
+    [Route("get-all")]
+    [SwaggerResponse(200, "Запрос выполнен успешно.")]
+    [SwaggerResponse(400, "Запрос невалидный. Не указаны обязательные параметры.")]
+    [SwaggerResponse(404, "Объект с указанным в запросе кодом не найден.")]    
+    public IActionResult GetAll() {
+        try {
+            return Ok(_context.RaspDBTable.ToModels());
+        } catch (Exception ex) {
+            return BadRequest($"{ex.Message}~{Environment.NewLine}~{ex.StackTrace}");
+        }
+    }
+
+
+    [HttpGet]
     [Route("get-airport")]
     [SwaggerResponse(200, "Запрос выполнен успешно.")]
     [SwaggerResponse(400, "Запрос невалидный. Не указаны обязательные параметры.")]
